@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Ver Almacenes{% endblock %}
+{% block content %}
+<div class="card p-3">
+  <h4>Lista de Almacenes</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Capacidad Máxima</th>
+        <th>Capacidad Disponible</th>
+        <th>Teléfono</th>
+        <th>Horario</th>
+        <th>Sucursal</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in almacenes %}
+      <tr>
+        <td>{{ a.nombre }}</td>
+        <td>{{ a.direccion }}</td>
+        <td>{{ a.capacidad_max }}</td>
+        <td>{{ a.capacidad_disp }}</td>
+        <td>{{ a.telefono }}</td>
+        <td>{{ a.horario }}</td>
+        <td>{{ a.id_sucursal.nombre }}</td>
+        <td>
+          <a class="btn btn-sm btn-info" href="{% url 'actualizar_almacen' a.id %}">Editar</a>
+          <a class="btn btn-sm btn-danger" href="{% url 'borrar_almacen' a.id %}">Borrar</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="8">No hay almacenes registrados.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a class="btn btn-success" href="{% url 'agregar_almacen' %}">Agregar Almacén</a>
+</div>
+{% endblock %}

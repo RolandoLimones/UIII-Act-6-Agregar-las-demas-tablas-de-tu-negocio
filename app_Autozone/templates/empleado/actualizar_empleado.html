@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Empleado{% endblock %}
+{% block content %}
+<div class="card p-3">
+  <h4>Actualizar Empleado</h4>
+  <form method="post" action="{% url 'realizar_actualizacion_empleado' empleado.id %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Nombre del empleado</label>
+      <input class="form-control" name="nombre_empleado" value="{{ empleado.nombre_empleado }}" maxlength="50">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Dirección</label>
+      <input class="form-control" name="direccion" value="{{ empleado.direccion }}" maxlength="150">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha de nacimiento</label>
+      <input class="form-control" name="fecha_nacimiento" type="date" value="{{ empleado.fecha_nacimiento|date:'Y-m-d' }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha de contratación</label>
+      <input class="form-control" name="fecha_contratacion" type="date" value="{{ empleado.fecha_contratacion|date:'Y-m-d' }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Sucursal</label>
+      <select class="form-control" name="sucursal" required>
+        <option value="">Seleccionar sucursal</option>
+        {% for sucursal in sucursales %}
+        <option value="{{ sucursal.id }}" {% if sucursal.id == empleado.sucursal.id %}selected{% endif %}>
+          {{ sucursal.nombre }} - {{ sucursal.ciudad }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+    <button class="btn btn-primary">Actualizar</button>
+    <a class="btn btn-secondary" href="{% url 'ver_empleados' %}">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

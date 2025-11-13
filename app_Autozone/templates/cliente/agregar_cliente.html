@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Cliente{% endblock %}
+{% block content %}
+<div class="card p-4">
+  <h4>Agregar Cliente</h4>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Nombre del cliente</label>
+      <input class="form-control" name="nombre_cliente" required maxlength="50">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Teléfono</label>
+      <input class="form-control" name="telefono" maxlength="15">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input class="form-control" name="email" type="email" maxlength="50">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Dirección</label>
+      <input class="form-control" name="direccion" maxlength="150">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha de nacimiento</label>
+      <input class="form-control" name="fecha_nacimiento" type="date">
+    </div>
+    <button class="btn btn-primary">Guardar</button>
+    <a href="{% url 'ver_clientes' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

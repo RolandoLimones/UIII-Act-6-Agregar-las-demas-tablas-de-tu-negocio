@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Ver Empleados{% endblock %}
+{% block content %}
+<div class="card p-3">
+  <h4>Lista de Empleados</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Fecha nacimiento</th>
+        <th>Fecha contratación</th>
+        <th>Sucursal</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for e in empleados %}
+      <tr>
+        <td>{{ e.nombre_empleado }}</td>
+        <td>{{ e.direccion }}</td>
+        <td>{{ e.fecha_nacimiento }}</td>
+        <td>{{ e.fecha_contratacion }}</td>
+        <td>{{ e.sucursal.nombre }}</td>
+        <td>
+          <a class="btn btn-sm btn-info" href="{% url 'actualizar_empleado' e.id %}">Editar</a>
+          <a class="btn btn-sm btn-danger" href="{% url 'borrar_empleado' e.id %}">Borrar</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="6">No hay empleados registrados.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a class="btn btn-success" href="{% url 'agregar_empleado' %}">Agregar Empleado</a>
+</div>
+{% endblock %}

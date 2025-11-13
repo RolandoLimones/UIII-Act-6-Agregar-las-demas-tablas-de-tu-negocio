@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Ver Clientes{% endblock %}
+{% block content %}
+<div class="card p-3">
+  <h4>Lista de Clientes</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th>Dirección</th>
+        <th>Fecha nacimiento</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in clientes %}
+      <tr>
+        <td>{{ c.nombre_cliente }}</td>
+        <td>{{ c.telefono }}</td>
+        <td>{{ c.email }}</td>
+        <td>{{ c.direccion }}</td>
+        <td>{{ c.fecha_nacimiento }}</td>
+        <td>
+          <a class="btn btn-sm btn-info" href="{% url 'actualizar_cliente' c.id %}">Editar</a>
+          <a class="btn btn-sm btn-danger" href="{% url 'borrar_cliente' c.id %}">Borrar</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="6">No hay clientes registrados.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a class="btn btn-success" href="{% url 'agregar_cliente' %}">Agregar Cliente</a>
+</div>
+{% endblock %}

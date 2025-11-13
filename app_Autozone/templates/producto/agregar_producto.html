@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Producto{% endblock %}
+{% block content %}
+<div class="card p-4">
+  <h4>Agregar Producto</h4>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Nombre del producto</label>
+      <input class="form-control" name="nombre_producto" required maxlength="50">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Cantidad</label>
+      <input class="form-control" name="cantidad" type="number" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Proveedor</label>
+      <select class="form-control" name="proveedor" required>
+        <option value="">Seleccionar proveedor</option>
+        {% for proveedor in proveedores %}
+        <option value="{{ proveedor.id }}">{{ proveedor.nombre }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Precio</label>
+      <input class="form-control" name="precio" type="number" step="0.01" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Almacén</label>
+      <select class="form-control" name="almacen" required>
+        <option value="">Seleccionar almacén</option>
+        {% for almacen in almacenes %}
+        <option value="{{ almacen.id }}">{{ almacen.nombre }} - {{ almacen.id_sucursal.nombre }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Foto del producto</label>
+      <input class="form-control" name="foto" type="file" accept="image/*">
+      <div class="form-text">Formatos aceptados: JPG, PNG, GIF. Tamaño máximo: 5MB.</div>
+    </div>
+    <button class="btn btn-primary">Guardar</button>
+    <a href="{% url 'ver_productos' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4 text-center">
+  <h3>¿Deseas borrar la sucursal "{{ sucursal.nombre }}"?</h3>
+  <form method="POST">
+    {% csrf_token %}
+    <button class="btn btn-danger">Sí, borrar</button>
+    <a href="{% url 'ver_sucursal' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

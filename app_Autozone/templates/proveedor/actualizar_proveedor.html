@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Proveedor{% endblock %}
+{% block content %}
+<div class="card p-3">
+  <h4>Actualizar Proveedor</h4>
+  <form method="post" action="{% url 'realizar_actualizacion_proveedor' proveedor.id %}">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input class="form-control" name="nombre" value="{{ proveedor.nombre }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Dirección</label>
+      <input class="form-control" name="direccion" value="{{ proveedor.direccion }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Teléfono</label>
+      <input class="form-control" name="telefono" value="{{ proveedor.telefono }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input class="form-control" name="email" value="{{ proveedor.email }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha de registro</label>
+      <input class="form-control" name="fecha_registro" type="date" value="{{ proveedor.fecha_registro|date:'Y-m-d' }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Días de entrega</label>
+      <input class="form-control" name="dias_entrega" value="{{ proveedor.dias_entrega }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Hora de entrega</label>
+      <input class="form-control" name="hora_entrega" value="{{ proveedor.hora_entrega }}">
+    </div>
+    <button class="btn btn-primary">Actualizar</button>
+    <a class="btn btn-secondary" href="{% url 'ver_proveedores' %}">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

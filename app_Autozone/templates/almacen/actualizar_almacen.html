@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3 class="text-center mb-4">Actualizar Almacén</h3>
+  <form method="POST" action="{% url 'realizar_actualizacion_almacen' almacen.id %}">
+    {% csrf_token %}
+    <input type="text" name="nombre" value="{{ almacen.nombre }}" class="form-control mb-3">
+    <input type="text" name="direccion" value="{{ almacen.direccion }}" class="form-control mb-3">
+    <input type="number" step="0.01" name="capacidad_max" value="{{ almacen.capacidad_max }}" class="form-control mb-3">
+    <input type="number" step="0.01" name="capacidad_disp" value="{{ almacen.capacidad_disp }}" class="form-control mb-3">
+    <input type="text" name="telefono" value="{{ almacen.telefono }}" class="form-control mb-3">
+    <input type="text" name="horario" value="{{ almacen.horario }}" class="form-control mb-3">
+    <select name="id_sucursal" class="form-select mb-3">
+      {% for s in sucursales %}
+      <option value="{{ s.id }}" {% if almacen.id_sucursal.id == s.id %}selected{% endif %}>{{ s.nombre }}</option>
+      {% endfor %}
+    </select>
+    <button class="btn btn-primary w-100">Actualizar</button>
+  </form>
+</div>
+{% endblock %}

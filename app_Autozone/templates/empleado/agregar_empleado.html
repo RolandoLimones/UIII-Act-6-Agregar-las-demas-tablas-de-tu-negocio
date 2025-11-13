@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Agregar Empleado{% endblock %}
+{% block content %}
+<div class="card p-4">
+  <h4>Agregar Empleado</h4>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Nombre del empleado</label>
+      <input class="form-control" name="nombre_empleado" required maxlength="50">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Dirección</label>
+      <input class="form-control" name="direccion" maxlength="150">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha de nacimiento</label>
+      <input class="form-control" name="fecha_nacimiento" type="date">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha de contratación</label>
+      <input class="form-control" name="fecha_contratacion" type="date">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Sucursal</label>
+      <select class="form-control" name="sucursal" required>
+        <option value="">Seleccionar sucursal</option>
+        {% for sucursal in sucursales %}
+        <option value="{{ sucursal.id }}">{{ sucursal.nombre }} - {{ sucursal.ciudad }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button class="btn btn-primary">Guardar</button>
+    <a href="{% url 'ver_empleados' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

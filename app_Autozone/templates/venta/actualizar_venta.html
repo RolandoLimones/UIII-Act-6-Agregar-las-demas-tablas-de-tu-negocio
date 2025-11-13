@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Actualizar Venta{% endblock %}
+{% block content %}
+<div class="card p-3">
+  <h4>Actualizar Venta</h4>
+  <form method="post" action="{% url 'realizar_actualizacion_venta' venta.id %}" id="ventaForm">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label class="form-label">Fecha de venta</label>
+      <input class="form-control" name="fecha_venta" type="date" value="{{ venta.fecha_venta|date:'Y-m-d' }}" readonly style="background-color: #f8f9fa;">
+      <div class="form-text">La fecha de venta no se puede modificar</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Producto</label>
+      <select class="form-control" name="producto" id="productoSelect" required>
+        <option value="">Seleccionar producto</option>
+        {% for producto in productos %}
+        <option value="{{ producto.id }}" data-precio="{{ producto.precio }}" 
+                {% if producto.id == venta.producto.id %}selected{% endif %}>
+          {{ producto.nombre_producto }} - ${{ producto.precio }}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Cantidad</label>
+      <input class="form-control" name="cantidad" id="cantidadInput" value="{{ venta.cantidad }}" type="number" min="1" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Total</label>
+      <input class="form-control" name="total" id="totalInput" type="number" step="0.01" value="{{ venta.total }}" readonly style="background-color: #f8f9fa;">
+      <div class="form-text">El total se calcula automáticamente: Precio del producto × Cantidad</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Cliente</label>
+      <input class="form-control" value="{{ venta.cliente.nombre_cliente }}" readonly style="background-color: #f8f9fa;">
+      <div class="form-text">El cliente no se puede modificar</div>
+      <input type="hidden" name="cliente" value="{{ venta.cliente.id }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Sucursal</label>
+      <input class="form-control" value="{{ venta.sucursal.nombre }} - {{ venta.sucursal.ciudad }}" readonly style="background-color: #f8f9fa;">
+      <div class="form-text">La sucursal no se puede modificar</div>
+      <input type="hidden" name="sucursal" value="{{ venta.sucursal.id }}">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Empleado</label>
+      <input class="form-control" value="{{ venta.empleado.nombre_empleado }} - {{ venta.empleado.sucursal.nombre }}" readonly style="background-color: #f8f9fa;">
+      <div class="form-text">El empleado no se puede modificar</div>
+      <input type="hidden" name="empleado" value="{{ venta.empleado.id }}">
+    </div>
+    <button class="btn btn-primary">Actualizar</button>
+    <a class="btn btn-secondary" href="{% url 'ver_ventas' %}">Cancelar</a>
+  </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const productoSelect = document.getElementById('productoSelect');
+  const cantidadInput = document.getElementById('cantidadInput');
+  const totalInput = document.getElementById('totalInput');
+
+  function calcularTotal() {
+    const productoOption = productoSelect.options[productoSelect.selectedIndex];
+    const precio = parseFloat(productoOption.getAttribute('data-precio')) || 0;
+    const cantidad = parseInt(cantidadInput.value) || 0;
+    const total = precio * cantidad;
+    
+    totalInput.value = total.toFixed(2);
+  }
+
+  productoSelect.addEventListener('change', calcularTotal);
+  cantidadInput.addEventListener('input', calcularTotal);
+
+  // Calcular total inicial
+  calcularTotal();
+});
+</script>
+{% endblock %}

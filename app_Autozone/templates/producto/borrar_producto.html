@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Borrar Producto{% endblock %}
+{% block content %}
+<div class="card p-3">
+  <h4>Confirmar eliminación</h4>
+  <div class="row">
+    <div class="col-md-8">
+      <p>¿Deseas eliminar el producto <strong>{{ producto.nombre_producto }}</strong>?</p>
+      <p><strong>Proveedor:</strong> {{ producto.proveedor.nombre }}</p>
+      <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+      <p><strong>Almacén:</strong> {{ producto.almacen.nombre }}</p>
+    </div>
+    <div class="col-md-4 text-center">
+      {% if producto.foto %}
+        <img src="{{ producto.foto.url }}" alt="{{ producto.nombre_producto }}" 
+             style="max-width: 150px; max-height: 150px; object-fit: cover;" class="img-thumbnail">
+      {% endif %}
+    </div>
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Sí, borrar</button>
+    <a class="btn btn-secondary" href="{% url 'ver_productos' %}">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

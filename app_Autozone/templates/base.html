@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autozone - {% block title %}{% endblock %}</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#7FB3D5; /* suave azul */
+      --accent:#F7D6B5;  /* suave coral claro */
+      --muted:#F4F7FA;
+      --card:#FFFFFF;
+    }
+    body{
+      background: var(--muted);
+      color: #243240;
+    }
+    .navbar-brand { font-weight: 700; }
+    .main-container { padding: 24px; }
+    footer { background:#f8f9fa; padding:12px 0; position: fixed; bottom: 0; width: 100%; }
+  </style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  {% include 'navbar.html' %}
+
+  <div class="container main-container">
+    {% block content %}{% endblock %}
+  </div>
+
+  {% include 'footer.html' %}
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
