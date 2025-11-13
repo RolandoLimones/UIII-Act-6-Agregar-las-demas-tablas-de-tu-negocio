@@ -1,1 +1,18 @@
-# UIII-Act-6-Agregar-las-demas-tablas-de-tu-negocio
+<img width="1594" height="858" alt="image" src="https://github.com/user-attachments/assets/773b99d4-afd1-4f65-8947-d03b2cff8325" />
+<img width="1600" height="849" alt="image" src="https://github.com/user-attachments/assets/0d4205ec-ad33-478b-b1bf-825be0a01833" />
+<img width="1600" height="850" alt="image" src="https://github.com/user-attachments/assets/f296edf2-8758-480b-90a5-6b8c676d1202" />
+<img width="1596" height="854" alt="image" src="https://github.com/user-attachments/assets/978d9495-a66f-4806-9ae6-920a3f364bb4" />
+<img width="1600" height="847" alt="image" src="https://github.com/user-attachments/assets/6cec1597-8c0b-4389-b36c-639287139ba2" />
+<img width="1600" height="853" alt="image" src="https://github.com/user-attachments/assets/02df2ea3-29b8-44bc-9ae6-a64d07299082" />
+<img width="1595" height="852" alt="image" src="https://github.com/user-attachments/assets/50760683-194e-4538-8799-d24a9427a4ca" />
+<img width="1596" height="846" alt="image" src="https://github.com/user-attachments/assets/ba8e74d2-b1e0-4163-84ff-bd65b89cc7c4" />
+<img width="1597" height="858" alt="image" src="https://github.com/user-attachments/assets/f970a02b-925d-4149-ad1e-fd9b8e16d229" />
+<img width="1600" height="846" alt="image" src="https://github.com/user-attachments/assets/92f8c176-1136-4dcc-8b85-6db8143401dd" />
+<img width="1600" height="855" alt="image" src="https://github.com/user-attachments/assets/fc596357-4653-4db8-b6e3-f9e26f34196e" />
+<img width="1600" height="852" alt="image" src="https://github.com/user-attachments/assets/3a52a40f-1eea-4b9b-8fe4-fec927d8df28" />
+<img width="1600" height="856" alt="image" src="https://github.com/user-attachments/assets/b12f3f6c-2fed-4458-8164-eb35d4a03c04" />
+<img width="1600" height="862" alt="image" src="https://github.com/user-attachments/assets/18059454-7503-4d4f-ab01-348171d06e6d" />
+<img width="1599" height="848" alt="image" src="https://github.com/user-attachments/assets/ae5d171e-d31e-4667-8228-ac1dc7ac7e04" />
+<img width="1593" height="844" alt="image" src="https://github.com/user-attachments/assets/6af335d0-27a1-4de7-b410-49bd15e017c0" />
+<img width="1600" height="850" alt="image" src="https://github.com/user-attachments/assets/b3a3d186-fef6-44a1-ab02-9632ef8041d6" />
+<img width="1587" height="853" alt="image" src="https://github.com/user-attachments/assets/f2c2623b-557a-43ea-8fd4-d741aa03b420" />
